@@ -8,12 +8,20 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(resp http.ResponseWriter, req *http.Request) {
-		if req.URL.RequestURI() == "/main.js" {
+		switch req.URL.RequestURI() {
+		case "/main.js":
 			outBytes, err := ioutil.ReadFile("main.js")
 			if err != nil {
 				log.Fatal(err)
 			}
 			if _, err := resp.Write(outBytes); err != nil {
+				log.Fatal(err)
+			}
+			return
+		case "/foo.csv":
+			if _, err := resp.Write([]byte(`1,2,3
+3,4,5
+6,7,8`)); err != nil {
 				log.Fatal(err)
 			}
 			return
