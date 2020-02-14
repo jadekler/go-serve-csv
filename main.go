@@ -23,6 +23,8 @@ func main() {
 <head></head>
 <body>
 Hello world
+
+<button id="clickme">click me</button>
 </body>
 </html>
 <script type="text/javascript" src="main.js"></script>`))
